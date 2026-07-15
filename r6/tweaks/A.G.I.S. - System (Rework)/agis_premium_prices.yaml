@@ -1,0 +1,71 @@
+# ==========================================================================
+#  A.G.I.S. - Premium Price Override (TweakXL)
+# --------------------------------------------------------------------------
+#  WHY THIS FILE EXISTS
+#  Virtual Atelier can only set custom store prices for SOME item types
+#  (weapons, outfits, weapon mods, crafting materials, meds, most recipes).
+#  For CYBERWARE, QUICKHACKS and ICONIC items it always shows the game's
+#  own (vanilla) price - the store's price[] array is ignored for them.
+#  (The original A.G.I.S. author marked these categories as "auto".)
+#
+#  The ONLY way to make those categories cost more is to change the game's
+#  shared price records below. This is GLOBAL: it also affects ripperdocs
+#  and every other vendor - intended for a money-sink economy.
+#
+#  Every value below is a plain override of a vanilla price record. The
+#  comment shows the vanilla value and the resulting multiplier. Tune the
+#  numbers to taste, then relaunch the game (TweakXL recompiles on launch).
+#
+#  !! IN-GAME TEST RECOMMENDED !! These records drive a chained price
+#  formula (base x quality x tier x ... ). The multipliers below are
+#  proportional and safe (worst case: a record is unused -> no effect),
+#  but verify the final eddies values in a store and adjust if needed.
+#
+#  Requires: TweakXL (part of the Virtual Atelier dependency chain).
+# ==========================================================================
+
+# ---------------------------------------------------------------------------
+# CYBERWARE  (all implants, incl. iconic cyberware e.g. Maelstrom store)
+# All cyberware inherit buyPrice = [BaseCyberwarePrice, QualityMult, ...],
+# so scaling the shared base scales every implant proportionally.
+# ---------------------------------------------------------------------------
+# vanilla 1000  ->  5000  (~5x)
+Price.BaseCyberwarePrice:
+  value: 5000.0
+
+# ---------------------------------------------------------------------------
+# WEAPONS  (covers ICONIC weapons in 6th Street / Tyger Claws stores)
+# The A.G.I.S. *regular* weapon stores (2nd Amendment / Kendachi) use Virtual
+# Atelier's own custom prices and are NOT affected by this - only iconic
+# weapons and vanilla weapon vendors are. Remove this block if you do not
+# want vanilla weapon-vendor prices raised.
+# ---------------------------------------------------------------------------
+# vanilla 1000  ->  3000  (~3x)
+Price.BaseWeaponPrice:
+  value: 3000.0
+
+# ---------------------------------------------------------------------------
+# QUICKHACKS - programs  (Data Inc. store + Voodoo Boys iconic daemons)
+# ---------------------------------------------------------------------------
+# vanilla 2000  ->  6000  (~3x)
+Price.CyberdeckProgram:
+  value: 6000.0
+
+# ---------------------------------------------------------------------------
+# QUICKHACKS - recipes / schematics  (EdgeNet + NetWatch daemon-recipe stores)
+# ---------------------------------------------------------------------------
+# vanilla 600  ->  1800
+Price.UncommonQuickhackSchematics:
+  value: 1800.0
+# vanilla 1200  ->  3600
+Price.RareQuickhackSchematics:
+  value: 3600.0
+# vanilla 1500  ->  4500
+Price.EpicQuickhackSchematics:
+  value: 4500.0
+# vanilla 5000  ->  15000
+Price.LegendaryQuickhackSchematics:
+  value: 15000.0
+# vanilla 10000  ->  30000
+Price.LegendaryPlusPlusQuickhackSchematics:
+  value: 30000.0

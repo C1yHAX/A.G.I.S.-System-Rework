@@ -1,0 +1,12 @@
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+.vscode/
+
+# Vortex deployment markers (not part of the mod source)
+__folder_managed_by_vortex
+
+# build artifacts
+*.zip
